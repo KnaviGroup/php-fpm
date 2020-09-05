@@ -86,7 +86,7 @@ RUN pecl install -o -f redis && \
     rm -rf /tmp/pear && \
     docker-php-ext-enable redis
 
-COPY ./docker/php-fpm/opcache.ini /usr/local/etc/php/conf.d/opcache.ini
+COPY ./opcache.ini /usr/local/etc/php/conf.d/opcache.ini
 
 # Install imagick
 USER root
@@ -96,8 +96,8 @@ RUN apt-get install -y libmagickwand-dev imagemagick && \
     docker-php-ext-enable imagick
 
 # Final touch
-COPY ./docker/php-fpm/php.ini /usr/local/etc/php/conf.d
-COPY ./docker/php-fpm/php-fpm.pool.conf /usr/local/etc/php-fpm.d/
+COPY ./php.ini /usr/local/etc/php/conf.d
+COPY ./php-fpm.pool.conf /usr/local/etc/php-fpm.d/
 
 USER root
 
