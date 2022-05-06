@@ -28,6 +28,7 @@ RUN set -eux; \
             gnupg2 \
             git \
             curl \
+            libicu-dev \
             libmemcached-dev \
             libz-dev \
             libpq-dev \
@@ -47,6 +48,9 @@ RUN set -eux; \
     docker-php-ext-configure zip && \
     docker-php-ext-install zip && \
     php -m | grep -q 'zip'; \
+    # Install the intl extension
+    docker-php-ext-configure intl && \
+    docker-php-ext-install intl; \
     # Install the PHP pdo_mysql extention
     docker-php-ext-install pdo_mysql; \
     # Install the PHP pdo_pgsql extention
